@@ -20,9 +20,7 @@ class UserRole(models.Model):
 class Company(models.Model):
     name = models.CharField(max_length=100)
     cnpj = models.CharField(max_length=14)
-    def publish(self):
-        self.published_at = timezone.now()
-        self.save()
+    
     def __str__(self):
         return self.name
     

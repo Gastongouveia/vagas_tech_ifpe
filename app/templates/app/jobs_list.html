@@ -4,9 +4,9 @@
     {% for job in jobs %}
         <div class="job">
             <div class="date">
-                {{ job.published_date }}
+                {{ job.published_at }}
             </div>
-            <h2><a href="">{{ job.title }}</a></h2>
+            <h2><a href="{% url 'job_detail' job_id=post.pk %}">{{ job.title }}</a></h2>
             <p>{{ job.description|linebreaksbr }}</p>
         </div>
     {% endfor %}
