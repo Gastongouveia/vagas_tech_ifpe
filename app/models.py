@@ -57,7 +57,7 @@ class UserTechnology(models.Model):
 class UserCompany(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
-    function = models.CharField(max_length=100)
+    occupation = models.CharField(max_length=100)
 
     def __str__(self):
         return f"{self.user} - {self.company}"
@@ -68,3 +68,36 @@ class UserJobs(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.job}"
+    
+class UserResume(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    gitHub = models.CharField(max_length=100)
+    linkedIn = models.CharField(max_length=100)
+    age = models.IntegerField()
+    description = models.TextField()
+    certifications = models.TextField()
+    addittional_info = models.TextField()
+    
+    def __str__(self):
+        return f"{self.user} - {self.resume}"
+    
+class UserFormation(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    institution = models.CharField(max_length=100)
+    course = models.TextField()
+    start_date = models.DateField()
+    end_date = models.DateField()
+
+    def __str__(self):
+        return f"{self.user} - {self.formation}"
+    
+class UserExperience(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    company = models.CharField(max_length=100)
+    occupation = models.CharField(max_length=100)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    description = models.TextField()
+
+    def __str__(self):
+        return f"{self.user} - {self.experience}"
